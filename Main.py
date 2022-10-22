@@ -8,14 +8,16 @@ from numpy.linalg import eig
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#tableau test
 ##X = np.array([[16, 16],
 ##              [14, 7],
 ##              [6, 15],
 ##              [8, 10]])
 
-numRows = int(input("Combien de lignes?") )
-numColumns = int(input("Combien de colonnes?"))
+numRows = int(input("Combien de lignes?") ) #on demande à l'utilisateur de rentrer le nombre de ligne de la matrice
+numColumns = int(input("Combien de colonnes?")) #on demande à l'utilisateur de rentrer le nombre de colonne de la matrice
 
+#tableau dynamique
 X = []
 for i in range(numRows):
     X.append([0] * numColumns)
@@ -40,34 +42,30 @@ print("Les vecteurs propres de la matrice de corrélation (après mise à l'eche
 pca = PCA(n_components = 2)
 principal_components = pca.fit_transform(X_std)
 new_X = pd.DataFrame(data = principal_components, columns = ['Composante principale 1', 'Principale composante 2'])
-new_X.head()
+new_X.head()    #matrice 'Psi' sous forme de tableau grâce à Pandas
 print("La matrice 'Psi' sous forme de tableau vaut: \n", new_X)
 
-##pourcentage_variance = np.round(pca.explained_variance_ratio_*100, decimals = 1)
-##label = ['PC' + str(x) for x in range(1, len(pourcentage_variance) + 1)]
-##plt.bar(x = range(1, len(pourcentage_variance) + 1), height = pourcentage_variance, tick_label = label)
-##plt.xlabel("Composantes principales")
-##plt.ylabel("Pourcentage de variance expliqué")
-##plt.title("Graphe de pourcentage des composantes principales")
+pourcentage_variance = np.round(pca.explained_variance_ratio_*100, decimals = 1)
+label = ['PC' + str(x) for x in range(1, len(pourcentage_variance) + 1)]
+plt.bar(x = range(1, len(pourcentage_variance) + 1), height = pourcentage_variance, tick_label = label)
+plt.xlabel("Composantes principales")
+plt.ylabel("Pourcentage de variance expliqué")
+plt.title("Graphe de pourcentage des composantes principales")
 #plt.show()
 
 color = 'red'
-#n = ["ind1", "ind2", "ind3", "ind4"]
-n = []
+#n = ["ind1", "ind2", "ind3", "ind4"]   #tableau rentré de manière statique
+n = []  #tableau rentré de manière dynamique
 for i in range(numRows):
     n.append("Ind" + str(i + 1))
 
-plt.figure(figsize = (2, 2))
+plt.figure(figsize = (2, 2))    #dimensionnement de la fenêtre
 plt.scatter(principal_components[:, 0], principal_components[:, 1], c = color, cmap = 'viridis', alpha = 1)
 for i, txt in enumerate(n):
-    plt.annotate(txt, (principal_components[i, 0], principal_components[i, 1]))
+    plt.annotate(txt, (principal_components[i, 0], principal_components[i, 1])) #place les annotation "Ind1, Ind2, ..., Indn" sur le graphe des plans principaux
 
 plt.xlabel("Composante principale 1")
 plt.ylabel("Composante principale 2")
 plt.title("Plan principal 'psi1' et 'psi2'")
-plt.show()
-
-
-
-
+plt.show()  #on affiche les graphes
 
