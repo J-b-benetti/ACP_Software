@@ -22,11 +22,11 @@ for i in range(numRows):
     for j in range(numColumns):
         X[i][j] = float(input("Entrer les valeurs de la matrice"))
         print(X)
-
+X = np.array(X)
 print("La matrice de départ X vaut: \n", X, "\n")
 
 X_std = StandardScaler().fit_transform(X)
-print("Remise à l'échelle des vecteurs caractéristiques pour qu'ils aient tous la même échelle: \n", X_std, "\n")
+print("Standardisation des caractéristiques en supprimant la moyenne et en mettant à l'échelle la variance unitaire: \n", X_std, "\n")
 
 features = X_std.T
 correlation_matrix = np.cov(features)
@@ -43,12 +43,12 @@ new_X = pd.DataFrame(data = principal_components, columns = ['Composante princip
 new_X.head()
 print("La matrice 'Psi' sous forme de tableau vaut: \n", new_X)
 
-pourcentage_variance = np.round(pca.explained_variance_ratio_*100, decimals = 1)
-label = ['PC' + str(x) for x in range(1, len(pourcentage_variance) + 1)]
-plt.bar(x = range(1, len(pourcentage_variance) + 1), height = pourcentage_variance, tick_label = label)
-plt.xlabel("Composantes principales")
-plt.ylabel("Pourcentage de variance expliqué")
-plt.title("Graphe de pourcentage des composantes principales")
+##pourcentage_variance = np.round(pca.explained_variance_ratio_*100, decimals = 1)
+##label = ['PC' + str(x) for x in range(1, len(pourcentage_variance) + 1)]
+##plt.bar(x = range(1, len(pourcentage_variance) + 1), height = pourcentage_variance, tick_label = label)
+##plt.xlabel("Composantes principales")
+##plt.ylabel("Pourcentage de variance expliqué")
+##plt.title("Graphe de pourcentage des composantes principales")
 #plt.show()
 
 color = 'red'
