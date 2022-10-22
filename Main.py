@@ -43,14 +43,13 @@ new_X = pd.DataFrame(data = principal_components, columns = ['Composante princip
 new_X.head()
 print("La matrice 'Psi' sous forme de tableau vaut: \n", new_X)
 
-##pourcentage_variance = np.round(pca.explained_variance_ratio_*100, decimals = 1)
-##label = ['PC' + str(x) for x in range(1, len(pourcentage_variance) + 1)]
-##plt.bar(x = range(1, len(pourcentage_variance) + 1), height = pourcentage_variance, tick_label = label)
-##plt.xlabel("Composantes principales")
-##plt.ylabel("Pourcentage de variance expliqué")
-##plt.title("Graphe de pourcentage des composantes principales")
-###plt.show()
-##
+pourcentage_variance = np.round(pca.explained_variance_ratio_*100, decimals = 1)
+label = ['PC' + str(x) for x in range(1, len(pourcentage_variance) + 1)]
+plt.bar(x = range(1, len(pourcentage_variance) + 1), height = pourcentage_variance, tick_label = label)
+plt.xlabel("Composantes principales")
+plt.ylabel("Pourcentage de variance expliqué")
+plt.title("Graphe de pourcentage des composantes principales")
+#plt.show()
 
 color = 'red'
 plt.figure(figsize = (2, 2))
