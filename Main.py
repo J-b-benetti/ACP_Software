@@ -52,8 +52,16 @@ print("La matrice 'Psi' sous forme de tableau vaut: \n", new_X)
 #plt.show()
 
 color = 'red'
+#n = ["ind1", "ind2", "ind3", "ind4"]
+n = []
+for i in range(numRows):
+    n.append("Ind" + str(i + 1))
+
 plt.figure(figsize = (2, 2))
 plt.scatter(principal_components[:, 0], principal_components[:, 1], c = color, cmap = 'viridis', alpha = 1)
+for i, txt in enumerate(n):
+    plt.annotate(txt, (principal_components[i, 0], principal_components[i, 1]))
+
 plt.xlabel("Composante principale 1")
 plt.ylabel("Composante principale 2")
 plt.title("Plan principal 'psi1' et 'psi2'")
