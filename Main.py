@@ -35,7 +35,7 @@ X = np.array(X)
 print("La matrice de départ X vaut: \n", X, "\n")
 
 X_std = StandardScaler().fit_transform(X)
-print("Standardisation des caractéristiques en supprimant la moyenne et en mettant à l'échelle la variance unitaire. En d'autres termes, la matrice 'Z' vaut: \n", X_std, "\n")
+print("Données centrées réduites. En d'autres termes, la matrice 'Z' vaut: \n", X_std, "\n")
 
 features = X_std.T
 
@@ -56,7 +56,7 @@ n_components = 2
 pca = PCA(n_components = n_components)
 
 principal_components = pca.fit_transform(X_std)
-new_X = pd.DataFrame(data = psi, columns = ['Composante principale 1', 'Principale composante 2'])
+new_X = pd.DataFrame(data = principal_components, columns = ['Composante principale 1', 'Principale composante 2'])
 new_X.head()    #matrice 'Psi' sous forme de tableau grâce à Pandas
 print("La matrice 'Psi' sous forme de tableau vaut: \n", new_X)
 
@@ -99,9 +99,9 @@ for i in range(numRows):
     n.append("Ind" + str(i + 1))
 
 plt.figure(figsize = (2, 2))    #dimensionnement de la fenêtre
-plt.scatter(psi[:, 0], psi[:, 1], c = color, cmap = 'viridis', alpha = 1)
+plt.scatter(principal_components[:, 0], principal_components[:, 1], c = color, cmap = 'viridis', alpha = 1)
 for i, txt in enumerate(n):
-    plt.annotate(txt, (psi[i, 0], psi[i, 1])) #place les annotation "Ind1, Ind2, ..., Indn" sur le graphe des plans principaux
+    plt.annotate(txt, (principal_components[i, 0], principal_components[i, 1])) #place les annotation "Ind1, Ind2, ..., Indn" sur le graphe des plans principaux
 
 plt.xlabel("Composante principale 1")
 plt.ylabel("Composante principale 2")
