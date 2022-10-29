@@ -21,6 +21,15 @@ import matplotlib.pyplot as plt
 ##              [8, -4],
 ##              [5, 0]])
 
+##X = np.array([[167, 1, 163,  23, 41, 8, 6, 6],
+## [162, 2, 141, 12, 40, 12, 4, 15],
+## [119, 6, 69, 56, 39, 5, 13, 41],
+## [ 87, 11, 63, 111, 27, 3, 18, 39],
+## [103, 5, 68, 77, 32, 4, 11, 30],
+## [111, 4, 72, 66, 34, 6, 10, 28],
+## [130, 3, 76, 52, 43, 7, 7, 16],
+## [138, 7, 117, 74, 53, 8, 12, 20]])
+
 numRows = int(input("Combien de lignes?") ) #on demande à l'utilisateur de rentrer le nombre de ligne de la matrice
 numColumns = int(input("Combien de colonnes?")) #on demande à l'utilisateur de rentrer le nombre de colonne de la matrice
 
@@ -121,12 +130,21 @@ x2 = r*np.sin(theta)
 fig, ax = plt.subplots(1)
 ax.plot(x1, x2)
 plt.scatter(liste1[0, :], liste1[1, :], c = color, cmap = 'viridis', alpha = 1)
+
+print(eigVects_after_scaled.shape[0])
+
+liste_temp = []
+for i in range(eigVects_after_scaled.shape[0]):
+    liste_temp.append("Ind" + str(i + 1))
+
+for i, txt in enumerate(liste_temp):
+    plt.annotate(txt, (liste1[0, i], liste1[1, i]))
 ax.set_aspect(1)
 
-plt.xlim(-1.25,1.25)
-plt.ylim(-1.25,1.25)
+plt.xlim(-1.25, 1.25)
+plt.ylim(-1.25, 1.25)
 
-plt.grid(linestyle='--')
+plt.grid(linestyle = '--')
 plt.title("Cercle de corrélation", fontsize = 8)
 plt.show()
 
