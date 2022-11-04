@@ -135,7 +135,7 @@ print(eigVects_after_scaled.shape[0])
 
 liste_temp = []
 for i in range(eigVects_after_scaled.shape[0]):
-    liste_temp.append("Ind" + str(i + 1))
+    liste_temp.append("Var" + str(i + 1))
 
 for i, txt in enumerate(liste_temp):
     plt.annotate(txt, (liste1[0, i], liste1[1, i]))
