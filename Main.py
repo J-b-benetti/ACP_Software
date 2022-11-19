@@ -8,27 +8,27 @@ from numpy.linalg import eig
 import pandas as pd
 import matplotlib.pyplot as plt
 
-##tableau test
-##X = np.array([[16, 16],
-##              [14, 7],
-##              [6, 15],
-##              [8, 10]])
+#tableau test
+#X = np.array([[16, 16],
+#              [14, 7],
+#              [6, 15],
+#              [8, 10]])
 
-##X = np.array([[-4, -5],
-##              [0, 11],
-##              [3, 10],
-##              [6, 12],
-##              [8, -4],
-##              [5, 0]])
+#X = np.array([[-4, -5],
+#              [0, 11],
+#              [3, 10],
+#              [6, 12],
+#              [8, -4],
+#              [5, 0]])
 
-##X = np.array([[167, 1, 163,  23, 41, 8, 6, 6],
-## [162, 2, 141, 12, 40, 12, 4, 15],
-## [119, 6, 69, 56, 39, 5, 13, 41],
-## [ 87, 11, 63, 111, 27, 3, 18, 39],
-## [103, 5, 68, 77, 32, 4, 11, 30],
-## [111, 4, 72, 66, 34, 6, 10, 28],
-## [130, 3, 76, 52, 43, 7, 7, 16],
-## [138, 7, 117, 74, 53, 8, 12, 20]])
+#X = np.array([[167, 1, 163,  23, 41, 8, 6, 6],
+# [162, 2, 141, 12, 40, 12, 4, 15],
+# [119, 6, 69, 56, 39, 5, 13, 41],
+# [ 87, 11, 63, 111, 27, 3, 18, 39],
+# [103, 5, 68, 77, 32, 4, 11, 30],
+# [111, 4, 72, 66, 34, 6, 10, 28],
+# [130, 3, 76, 52, 43, 7, 7, 16],
+# [138, 7, 117, 74, 53, 8, 12, 20]])
 
 numRows = int(input("Combien de lignes?") ) #on demande à l'utilisateur de rentrer le nombre de ligne de la matrice
 numColumns = int(input("Combien de colonnes?")) #on demande à l'utilisateur de rentrer le nombre de colonne de la matrice
@@ -69,9 +69,9 @@ new_X = pd.DataFrame(data = principal_components, columns = ['Composante princip
 new_X.head()    #matrice 'Psi' sous forme de tableau grâce à Pandas
 print("La matrice 'Psi' sous forme de tableau vaut: \n", new_X)
 
-##print(vals)
-##print(eigVects_after_scaled[0])
-##print(eigVects_after_scaled[1])
+#print(vals)
+#print(eigVects_after_scaled[0])
+#print(eigVects_after_scaled[1])
 
 #calcul des valeurs du cercle de corrélation
 liste1 = []
@@ -110,7 +110,7 @@ for i in range(numRows):
 plt.figure(figsize = (2, 2))    #dimensionnement de la fenêtre
 plt.scatter(principal_components[:, 0], principal_components[:, 1], c = color, cmap = 'viridis', alpha = 1)
 for i, txt in enumerate(n):
-    plt.annotate(txt, (principal_components[i, 0], principal_components[i, 1])) #place les annotation "Ind1, Ind2, ..., Indn" sur le graphe des plans principaux
+    plt.annotate(txt, (principal_components[i, 0], principal_components[i, 1])) #place les annotations "Ind1, Ind2, ..., Indn" sur le graphe des plans principaux
 
 plt.xlabel("Composante principale 1")
 plt.ylabel("Composante principale 2")
@@ -146,5 +146,5 @@ plt.ylim(-1.25, 1.25)
 
 plt.grid(linestyle = '--')
 plt.title("Cercle de corrélation", fontsize = 8)
-plt.show()
+plt.show()  #on affiche tous les graphes
 
