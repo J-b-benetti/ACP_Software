@@ -48,15 +48,15 @@ print("Données centrées réduites. En d'autres termes, la matrice 'Z' vaut: \n
 
 features = X_std.T
 
+correlation_matrix = np.cov(features)
+print("La matrice de corrélation (après mise à l'echelle) vaut: \n", correlation_matrix, "\n")
+
 corr_matrix_without_scale = np.corrcoef(X.T)
 vals, vects = eig(corr_matrix_without_scale)
 print("Les valeurs propres de la matrice de corrélation sont: \n", vals, "\n")
 
-correlation_matrix = np.cov(features)
-print("La matrice de corrélation (après mise à l'echelle) vaut: \n", correlation_matrix, "\n")
-
 eigVals_after_scaled, eigVects_after_scaled = eig(correlation_matrix)
-print("Les valeurs propres de la matrice de corrélation (après mise à l'echelle) sont: \n", eigVals_after_scaled, "\n")
+#print("Les valeurs propres de la matrice de corrélation (après mise à l'echelle) sont: \n", eigVals_after_scaled, "\n")
 print("Les vecteurs propres de la matrice de corrélation (après mise à l'echelle) sont: \n", eigVects_after_scaled, "\n")
 
 psi = np.dot(X_std, eigVects_after_scaled)  #calcul de la matrice 'psi'
